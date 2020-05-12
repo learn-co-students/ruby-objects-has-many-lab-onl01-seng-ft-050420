@@ -1,3 +1,4 @@
+require 'pry'
 class Post 
   attr_accessor :title, :author
   
@@ -12,21 +13,20 @@ class Post
     @@all
   end
 
-  def title 
-    @title
-  end
+  # def title 
+  #   @title
+  # end
   
-  def author
-    @author
-  end
+  # def author
+  #   @author
+  # end
   
   def author_name
     if self.author 
       return self.author.name
+      binding.pry
     else 
       nil 
     end
   end
-
-
 end
