@@ -1,12 +1,15 @@
-
 class Post  #is initialized with an argument of a title
-
   attr_accessor :title, :author   #has a title
                                   #belongs to an author
-
+    @@all = []
 
   def initialize(title)
     @title = title
+    @@all << self
+  end
+
+  def self.all
+    @@all
   end
 
   def author_name

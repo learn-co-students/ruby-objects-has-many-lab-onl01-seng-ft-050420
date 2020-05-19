@@ -6,15 +6,12 @@ class Artist #is initialized with a name
 
   def initialize(name)
     @name = name
-  end
-
-  def songs
-    Song.all.select {|song| song.artist == self}
+    @songs = []
   end
 
   def add_song(song) # takes in an argument of a song and associates that song with
                       # the artist by telling the song that it belongs to that artist
-    @songs << song
+    self.songs << song
     song.artist = self
     @@song_count += 1
   end
@@ -27,8 +24,12 @@ class Artist #is initialized with a name
     @@song_count += 1
   end
 
+  def songs
+    Song.all.select {|song| song.artist == self}
+  end
+
   def self.song_count
-    @@song_count
+    Song.all.count
   end
 
 end

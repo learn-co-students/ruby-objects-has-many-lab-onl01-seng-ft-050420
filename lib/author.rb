@@ -1,4 +1,3 @@
-
 class Author  #s initialized with a name
 
   attr_accessor :name, :posts  #has an attr_accessor for name
@@ -12,7 +11,7 @@ class Author  #s initialized with a name
 
   def add_post(post)  #takes in an argument of a post and associates that post with
                       #the author by telling the post that it belongs to that author
-    @posts << post
+    self.posts << post
     post.author = self
     @@post_count += 1
   end
@@ -25,7 +24,11 @@ class Author  #s initialized with a name
     @@post_count += 1
   end
 
+  def posts
+    Post.all.select {|post| post.author == self}
+  end
+
   def self.post_count
-    @@post_count
+    Song.all.count
   end
 end
